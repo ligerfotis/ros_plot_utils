@@ -1,0 +1,52 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyCompatibilityInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ourVersions">
+        <value>
+          <list size="2">
+            <item index="0" class="java.lang.String" itemvalue="2.7" />
+            <item index="1" class="java.lang.String" itemvalue="3.9" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="15">
+            <item index="0" class="java.lang.String" itemvalue="basis-expansions" />
+            <item index="1" class="java.lang.String" itemvalue="wxPython-common" />
+            <item index="2" class="java.lang.String" itemvalue="antlr" />
+            <item index="3" class="java.lang.String" itemvalue="wxPython" />
+            <item index="4" class="java.lang.String" itemvalue="catkin-pkg-modules" />
+            <item index="5" class="java.lang.String" itemvalue="GDAL" />
+            <item index="6" class="java.lang.String" itemvalue="trollius" />
+            <item index="7" class="java.lang.String" itemvalue="rosdep-modules" />
+            <item index="8" class="java.lang.String" itemvalue="jdcal" />
+            <item index="9" class="java.lang.String" itemvalue="patsy" />
+            <item index="10" class="java.lang.String" itemvalue="rosdistro-modules" />
+            <item index="11" class="java.lang.String" itemvalue="rospkg-modules" />
+            <item index="12" class="java.lang.String" itemvalue="bzr" />
+            <item index="13" class="java.lang.String" itemvalue="pygobject" />
+            <item index="14" class="java.lang.String" itemvalue="PAM" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="float.numpy" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
