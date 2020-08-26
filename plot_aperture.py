@@ -16,9 +16,24 @@ if not exists(path):
 def plot_aperture(list_of_files):
     # load a dictionary of the dataframes of each file
     df_dict = load(list_of_files)
-    plt.figure("Aperture", figsize=[12, 8])
+
+    # plot on separate figure for each file
+    for filename in list_of_files:
+        plt.figure("Aperture_" + filename[:-4], figsize=[12, 8])
+        current_df = df_dict[filename]
+        timestamps = current_df["TimeStamps"].tolist()
+        timestamps = regularize_time(timestamps)
+        aperture, blacklist = extractAperture(current_df)
+        # remove the timestamps for which there was a point missing either from the index or thumb fingertips
+        [timestamps.pop(idx) for idx in blacklist]
+        # plot
+        plt.plot(timestamps, aperture, label=filename[:-4])[0]
+
+        plt.legend(loc="upper left")
+        plt.savefig(path + "aperture_" + filename[:-4])  # remove the .csv extension
 
     # plot a line for each file
+    plt.figure("Aperture", figsize=[12, 8])
     for filename in list_of_files:
         current_df = df_dict[filename]
         timestamps = current_df["TimeStamps"].tolist()
@@ -30,7 +45,7 @@ def plot_aperture(list_of_files):
         plt.plot(timestamps, aperture, label=filename)[0]
 
     plt.legend(loc="upper left")
-    plt.savefig(path + "aperture")
+    plt.savefig(path + "total_aperture")
     # plt.show()
 
 
