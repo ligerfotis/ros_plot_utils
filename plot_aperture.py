@@ -1,9 +1,6 @@
 from os import listdir, makedirs
 from os.path import isfile, join, exists
-
-from matplotlib.font_manager import FontProperties
 from scipy.spatial import distance
-
 from load_df_from_csv import load
 import numpy as np
 import matplotlib.pyplot as plt
@@ -27,7 +24,7 @@ def plot_aperture(list_of_files):
         # remove the timestamps for which there was a point missing either from the index or thumb fingertips
         [timestamps.pop(idx) for idx in blacklist]
         # plot
-        plt.plot(timestamps, aperture, label=filename[:-4])[0]
+        plt.plot(timestamps, aperture, label=filename[:-4], marker='o')
 
         plt.legend(loc="upper left")
         plt.savefig(path + "aperture_" + filename[:-4])  # remove the .csv extension
@@ -42,7 +39,7 @@ def plot_aperture(list_of_files):
         # remove the timestamps for which there was a point missing either from the index or thumb fingertips
         [timestamps.pop(idx) for idx in blacklist]
         # plot
-        plt.plot(timestamps, aperture, label=filename)[0]
+        plt.plot(timestamps, aperture, label=filename)
 
     plt.legend(loc="upper left")
     plt.savefig(path + "total_aperture")
