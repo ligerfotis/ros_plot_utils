@@ -9,10 +9,9 @@ import sys
 from os import listdir
 from os.path import isfile, join
 
-
 # the z score value used to filter outliers
 zscore = 2.698
-
+record_types = ["live", "on_demand"]
 path = "stripped_final/"
 if not os.path.exists(path):
     os.makedirs(path)
@@ -74,12 +73,16 @@ def keypointExtractor(filename, withOutliers=False):
 
 
 if __name__ == "__main__":
-    list_of_files = [f for f in listdir("data") if isfile(join("data", f))]
-    for filename in list_of_files:
-        # filename = sys.argv[1]
-        print("Stripping file: %s" % filename)
-        df = keypointExtractor("data/" + filename)
-        # print(path + filename)
-        df.to_csv(path + filename, index=False)
-        # df.to_csv(path + filename, index=False, na_rep='NA')
+    record_type = sys.argv[1]  # live or on_demand
+    if record_type not in record_types:
+        print("Please select record type [live or on_demand]")
+        exit(1)
 
+    list_of_files = [f for f in listdir("data/" + record_type + "/") if isfile(join("data/" + record_type + "/", f))]
+
+    for filename in list_of_files:
+        print("Stripping file: %s" % record_type + "/" + filename)
+        df = keypointExtractor("data/" + record_type + "/" + filename)
+        # print(path + filename)
+        df.to_csv(path + record_type + "/" + filename, index=False)
+        # df.to_csv(path + filename, index=False, na_rep='NA')

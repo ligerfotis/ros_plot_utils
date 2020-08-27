@@ -1,3 +1,4 @@
+import sys
 from os import listdir, makedirs
 from os.path import isfile, join, exists
 from scipy.spatial import distance
@@ -5,6 +6,7 @@ from load_df_from_csv import load
 import numpy as np
 import matplotlib.pyplot as plt
 
+record_types = ["live", "on_demand"]
 path = "figures/"
 if not exists(path):
     makedirs(path)
@@ -12,7 +14,7 @@ if not exists(path):
 
 def plot_aperture(list_of_files):
     # load a dictionary of the dataframes of each file
-    df_dict = load(list_of_files)
+    df_dict = load(list_of_files, record_type)
 
     # plot on separate figure for each file
     for filename in list_of_files:
@@ -27,7 +29,7 @@ def plot_aperture(list_of_files):
         plt.plot(timestamps, aperture, label=filename[:-4], marker='o')
 
         plt.legend(loc="upper left")
-        plt.savefig(path + "aperture_" + filename[:-4])  # remove the .csv extension
+        plt.savefig(path + record_type + "/" + "aperture_" + filename[:-4])  # remove the .csv extension
 
     # plot a line for each file
     plt.figure("Aperture", figsize=[12, 8])
@@ -42,7 +44,7 @@ def plot_aperture(list_of_files):
         plt.plot(timestamps, aperture, label=filename)
 
     plt.legend(loc="upper left")
-    plt.savefig(path + "total_aperture")
+    plt.savefig(path + record_type + "/" + "total_aperture")
     # plt.show()
 
 
@@ -74,5 +76,10 @@ def extractAperture(current_df):
 
 
 if __name__ == "__main__":
-    list_of_files = [f for f in listdir("stripped_final") if isfile(join("stripped_final", f))]
+    record_type = sys.argv[1]  # live or on_demand
+    if record_type not in record_types:
+        print("Please select record type [live or on_demand]")
+        exit(1)
+
+    list_of_files = [f for f in listdir("stripped_final/" + record_type + "/") if isfile(join("stripped_final/" + record_type + "/", f))]
     plot_aperture(list_of_files)
