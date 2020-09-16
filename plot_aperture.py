@@ -73,15 +73,15 @@ def plot_aperture(list_of_files, plot_type):
             plt.figure("Keypoints_" + "keypoint_RIndex4FingerTip_x_"+ filename[:-4], figsize=[12, 8])
             plt.plot(timestamps_index, keypoints_index[0], marker='o')
             plt.savefig(
-                path + record_type + "/" + filename + "/" + "keypoint_RIndex4FingerTip_x_" + filename[:-4]) # remove the .csv extension
+                path + record_type + "/" + filename + "/" + "keypoint_RIndex4FingerTip_x_" + filename[:-4]) # removes the .csv extension
             plt.figure("Keypoints_" + "keypoint_RIndex4FingerTip_y_" + filename[:-4], figsize=[12, 8])
             plt.plot(timestamps_index, keypoints_index[1], marker='o')
             plt.savefig(
-                path + record_type + "/" + filename + "/" + "keypoint_RIndex4FingerTip_y_" + filename[:-4])  # remove the .csv extension
+                path + record_type + "/" + filename + "/" + "keypoint_RIndex4FingerTip_y_" + filename[:-4])  # removes the .csv extension
             plt.figure("Keypoints_" + "keypoint_RIndex4FingerTip_z_" + filename[:-4], figsize=[12, 8])
             plt.plot(timestamps_index, keypoints_index[2], marker='o')
             plt.savefig(
-                path + record_type + "/" + filename + "/" + "keypoint_RIndex4FingerTip_z_" + filename[:-4])  # remove the .csv extension
+                path + record_type + "/" + filename + "/" + "keypoint_RIndex4FingerTip_z_" + filename[:-4])  # removes the .csv extension
 
             timestamps_thumb = timestamps[:]
             # [timestamps_thumb.pop(idx) for idx in reversed(blacklist_thumb)]
@@ -89,7 +89,7 @@ def plot_aperture(list_of_files, plot_type):
             plt.figure("Keypoints_" + "keypoint_RThumb4FingerTip_x_" + filename[:-4], figsize=[12, 8])
             plt.plot(timestamps_thumb, keypoints_thumb[0], marker='o')
             plt.savefig(
-                path + record_type + "/" + filename + "/" + "keypoint_RThumb4FingerTip_x_" + filename[:-4])  # remove the .csv extension
+                path + record_type + "/" + filename + "/" + "keypoint_RThumb4FingerTip_x_" + filename[:-4])  # removes the .csv extension
             plt.figure("Keypoints_" + "keypoint_RThumb4FingerTip_y_"+ filename[:-4], figsize=[12, 8])
             plt.plot(timestamps_thumb, keypoints_thumb[1], marker='o')
             plt.savefig(
